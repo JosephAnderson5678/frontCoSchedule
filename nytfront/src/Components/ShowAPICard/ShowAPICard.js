@@ -8,16 +8,21 @@ import {
   Link as RRLink, // the RRLink is because material UI also uses link this clears up any confusion.
    } from "react-router-dom";
    import axios from 'axios';
-   import { useState } from 'react';
+   import React, { useEffect, useState, useRef } from "react";
+   import Rating from '@mui/material/Rating';
+
 
 function ShowAPICard(props) {
 
   const bookData = {
     title: props.title,
     author: props.author,
-    summary: props.summary
+    summary: props.summary,
+    fromShowByAuthor: props.fromShowByAuthor,
+    fromGetAllReviews: props.fromGetAllReviews,
   };    /* Normally I would send in an ID but the NYT API UUID and URI are broken */
-  
+  const [ratingValue, setRatingValue] = React.useState(props.stars);
+
 
       return (
         <>
@@ -38,11 +43,18 @@ function ShowAPICard(props) {
            <div>
             Summary: {props.summary}
            </div>
-           
+           {props.fromGetAllReviews &&  <div>Review: {props.review}</div>}
+           {props.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly
+      />}
+
         </Typography>
       </CardContent>
       <CardActions>
-      <Button size="small" component={RRLink}   to={'/reviewrate/'} state={bookData}>Review and Rate</Button>
+
+      {props.fromShowByAuthor &&  <Button size="small" component={RRLink}   to={'/reviewrate/'} state={bookData}>Review and Rate</Button>}
+      {props.fromGetAllReviews &&  <Button size="small" component={RRLink}   to={'/updatereview/'} state={bookData}>Update Review and Rating</Button>}
+
+     
      
 
       

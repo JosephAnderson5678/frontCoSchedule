@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import APIUURLS from '../../Constants/APIURLs'
+import APIURLS from '../../Constants/APIURLs'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -16,10 +16,9 @@ function ShowByAuthor(props){
  
     
     useEffect(() => {
-        console.log("author parameter: " + author);
-        console.log("apiURLS: " + APIUURLS.searchAuthorAPIURL);
+   
         //axios.get("http://localhost:3000/books/searchauthor/"+author)
-        axios.get(APIUURLS.searchAuthorAPIURL + author)
+        axios.get(APIURLS.searchAuthorAPIURL + author)
        .then(response => {
         console.log(response.data);
         const allBooks= response.data.APIResponse;
@@ -30,7 +29,6 @@ function ShowByAuthor(props){
 
 
     return (
-        <>
      
 
      <>
@@ -43,6 +41,7 @@ function ShowByAuthor(props){
       author= {book.book_author}
       title= {book.book_title}
       summary= {book.summary}  
+      fromShowByAuthor= {true}
       ></ShowAPICard>
 
   </Grid>
@@ -55,7 +54,6 @@ function ShowByAuthor(props){
 
         </>
 
-      </>
     );
 }
 
