@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 import Rating from '@mui/material/Rating';
+import ErrorSuccessAlerts from "../ErrorSuccessAlerts/ErrorSuccessAlerts";
+import axios from 'axios';
 
 function ReviewRate(props){
     const [ratingValue, setRatingValue] = React.useState(0);
@@ -11,12 +13,15 @@ function ReviewRate(props){
     const location = useLocation();
     const bookData = location.state;
     const reviewFieldRef = useRef("");
-    var reviewReqMetEmpty=false;
     const [textFieldErrorMessages, setTextFieldErrorMessages] = useState({
         reviewErrorMessage: "",
       }); // Use it like this because if the client wants more variables added later you can just add them here more easily. 
-
-
+      const [openError, setOpenError] = useState(false)
+      const [openErrorMessage, setOpenErrorMessage] = useState("")
+      const [openSuccess, setOpenSuccess] = useState(false)
+      const [openSuccessMessage, setOpenSuccessMessage] = useState("");
+        
+    
        // this controls whether or not to highlight the textbox and its colors in red to let the user know if their is an error. 
     const [textFieldErrorState, setTextFieldErrorState] = useState({
         reviewErrorColor: false,
@@ -33,8 +38,52 @@ function ReviewRate(props){
   
       }
       const readTextFieldValue = () => {
+      /*validate the input and make sure it is not null. Their are simpler ways to do this, but I wanted to show I know how to use validator
+      which is important when working with things more complicated than strings.  */
+      const validator = require('validator')
+
+      if (validator.isEmpty( reviewFieldRef.current.value) === true){ // true = empty string
+
+        setOpenError(true)  
+        setOpenSuccess(false);
+        setOpenErrorMessage("Required information incorrect or empty please fix.")
+        setOpenSuccessMessage("")
+        setTextFieldErrorState(previousState => {
+            return { ...previousState, reviewErrorColor: true }
+          });
+      }else{
+        resetAllFields();  // resets the error message and colors once something is properly entered.
       
-    }
+        console.log("got to here: " + reviewFieldRef.current.value)
+        axios.post('http://localhost:3000/books/createreview/', {
+            review: reviewFieldRef.current.value,
+            stars:  ratingValue,
+            title: bookData.title,
+            author: bookData.author,
+            NYTSummary: bookData.summary,
+        })
+          .then((response) => {
+              //update the other components so they correctly display the updated data
+              setOpenSuccess(true);
+              setOpenError(false);
+              setOpenErrorMessage("")
+              setOpenSuccessMessage(" Added to Database")
+
+          })
+            .catch((error) => {
+              setOpenError(true)  
+              setOpenSuccess(false);
+              setOpenErrorMessage("Error updating database please try again later.")
+              setOpenSuccessMessage("")
+
+            });
+
+
+        }
+        
+      }
+      
+    
 
 
     return (
@@ -53,6 +102,17 @@ function ReviewRate(props){
               summary: {bookData.summary}
               </p>
        </Container>
+       <ErrorSuccessAlerts
+       openError={openError}
+       setOpenError={setOpenError}
+       openSuccess={openSuccess}
+       setOpenSuccess={setOpenSuccess}
+       openErrorMessage={openErrorMessage}
+       setOpenErrorMessage={setOpenErrorMessage}
+       openSuccessMessage={openSuccessMessage}
+       setOpenSuccessMessage={setOpenSuccessMessage}
+       ></ErrorSuccessAlerts>
+
        <Box style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} >
        <TextField
           id="outlined-helperText"
@@ -73,9 +133,9 @@ function ReviewRate(props){
           setRatingValue(newValue);
         }} />
 
-       <Button variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} >Add Review</Button>
+       <Button variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
        </Box>
-
+      
     
               </>
     )
