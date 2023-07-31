@@ -90,14 +90,17 @@ function ResponsiveAppBar() {
               }}
             > 
             {/* MOBILE MENU*/ }
-                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthor/">
-                    <Typography textAlign="center">NYT By Author</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/getallreviews/">
+            <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/getallreviews/">
                     <Typography textAlign="center">All Reviews</Typography>
                 </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthorNYT/">
+                    <Typography textAlign="center">NYT By Author</Typography>
+                </MenuItem>
+               
                    
-
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchtitleNYT/">
+                    <Typography textAlign="center">NYT By Title</Typography>
+                </MenuItem>
                
             </Menu>
           </Box>
@@ -123,13 +126,16 @@ function ResponsiveAppBar() {
                       {/* BIG NON MOBILE MENU*/ }
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>  
-            <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthor/">
-                    <Typography textAlign="center">NYT By Author</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/getallreviews/">
+          <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/getallreviews/">
                     <Typography textAlign="center">All Reviews</Typography>
                 </MenuItem>
-                   
+            <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthorNYT/">
+                    <Typography textAlign="center">NYT By Author</Typography>
+                </MenuItem>
+              
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchtitleNYT/">
+                    <Typography textAlign="center">NYT By Title</Typography>
+                </MenuItem>
 
 
           

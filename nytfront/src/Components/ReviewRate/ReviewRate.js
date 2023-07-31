@@ -6,6 +6,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Rating from '@mui/material/Rating';
 import ErrorSuccessAlerts from "../ErrorSuccessAlerts/ErrorSuccessAlerts";
 import axios from 'axios';
+import APIURLS from "../../Constants/APIURLs";
 
 function ReviewRate(props){
     const [ratingValue, setRatingValue] = React.useState(0);
@@ -55,7 +56,7 @@ function ReviewRate(props){
         resetAllFields();  // resets the error message and colors once something is properly entered.
       
         console.log("got to here: " + reviewFieldRef.current.value)
-        axios.post('http://localhost:3000/books/createreview/', {
+        axios.post(APIURLS.createReview, {
             review: reviewFieldRef.current.value,
             stars:  ratingValue,
             title: bookData.title,
@@ -68,7 +69,6 @@ function ReviewRate(props){
               setOpenError(false);
               setOpenErrorMessage("")
               setOpenSuccessMessage(" Added to Database")
-
           })
             .catch((error) => {
               setOpenError(true)  

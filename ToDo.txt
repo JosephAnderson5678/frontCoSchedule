@@ -1,1 +1,34 @@
-1. Once UUID/URI is fixed update sending that in where needed.
+
+
+1. Once UUID/URI is fixed update sending that in where needed in search by author and search by title.
+
+2. possibility to combine initial review component with update because they have so much in common. Would this help maintainability or is it not worth doing that way? I could
+code it either way, but just comes down to senior engineers opinion. Right now it is its own seperate feature, but that is a lot of extra code to maintain. 
+
+3. Code it so when the user updates the review it automatically displays the new review. This means make an API call for the new details. 
+
+
+4.       <Route path="/updatereview/" element={<UpdateReview/>}/>
+Missing ID? shouldn't it be like
+      <Route path="/showbyauthor/:author" element={<ShowByAuthor />} />
+
+      also       <Route path="/deletereview/" element={<ShowByAuthor />} />
+Still works but need to test and figure out. Low priority because it still works.
+
+
+5. code SEARCH REVIEW BY ID so it can be used when displaying data.
+
+6. code search review by author (our database not NYT)
+
+7. code search review by title  (our database not NYT)
+
+8. lorem ipsum make sure things like cards and such fit correctly
+
+11. figure out why the text box is misaligned
+
+
+12. Ongoing: make code prettier/more readable especially HTML.
+
+13. Datagrid from material UI.
+
+14. make a 404 page and put it into the router as the default.

@@ -7,7 +7,7 @@ import ShowAPICard from '../ShowAPICard/ShowAPICard';
 function GetAllReviews(props){
 
     const [books,getBooks]=useState();
-
+    const fromGetAllReviews=true;
    
        
     useEffect(() => {
@@ -32,7 +32,8 @@ function GetAllReviews(props){
              summary= {book.NYTSummary} 
              review={book.review}
              stars= {book.stars} 
-             fromGetAllReviews={true}
+             fromGetAllReviews={fromGetAllReviews}
+             IDFromReviews={book.id}
              ></ShowAPICard>
        
          </Grid>

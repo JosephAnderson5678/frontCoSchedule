@@ -7,22 +7,22 @@ import {
      import { useNavigate } from 'react-router-dom';
      import { Container } from "@mui/material";
 
-function SearchAuthor() {
+function SearchTitleNYT() {
     const textFieldRef = useRef("");
     const navigate = useNavigate();
 
     const readTextFieldValue = () => {
         console.log(textFieldRef.current.value);
-        navigate('/showbyauthor/'+textFieldRef.current.value);
+        navigate('/showbyTitleNYT/'+textFieldRef.current.value);
       }
 
     return (
         <>
-        <header style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Author to Search for:</header>
+        <header style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Title to Search for:</header>
         <Container maxWidth="sm" style={{display:"flex", alignItems:"center"}} >
             <TextField
             id="outlined-helperText"
-            label="Author To Search For"
+            label="Title To Search For"
             inputRef={textFieldRef}
             style={{padding:'10px'}}
             />
@@ -32,4 +32,4 @@ function SearchAuthor() {
     )
 }
 
-export default SearchAuthor;
+export default SearchTitleNYT;

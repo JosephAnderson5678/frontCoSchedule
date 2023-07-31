@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import {
   Link as RRLink, // the RRLink is because material UI also uses link this clears up any confusion.
    } from "react-router-dom";
-   import axios from 'axios';
    import React, { useEffect, useState, useRef } from "react";
    import Rating from '@mui/material/Rating';
 
@@ -18,8 +17,12 @@ function ShowAPICard(props) {
     title: props.title,
     author: props.author,
     summary: props.summary,
-    fromShowByAuthor: props.fromShowByAuthor,
+    fromShowByAuthorNYT: props.fromShowByAuthorNYT,
     fromGetAllReviews: props.fromGetAllReviews,
+    IDFromReviews: props.IDFromReviews,
+    review: props.review,
+    stars: props.stars,
+
   };    /* Normally I would send in an ID but the NYT API UUID and URI are broken */
   const [ratingValue, setRatingValue] = React.useState(props.stars);
 
@@ -28,7 +31,6 @@ function ShowAPICard(props) {
         <>
      
 
-
         <Card sx={{ maxWidth: 345 }}>
       
       <CardContent>
@@ -36,7 +38,6 @@ function ShowAPICard(props) {
         Title: {props.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-      
             <p>
             Author: {props.author}
             </p>
@@ -44,15 +45,15 @@ function ShowAPICard(props) {
             Summary: {props.summary}
            </div>
            {props.fromGetAllReviews &&  <div>Review: {props.review}</div>}
-           {props.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly
-      />}
+           {props.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
 
         </Typography>
       </CardContent>
       <CardActions>
 
-      {props.fromShowByAuthor &&  <Button size="small" component={RRLink}   to={'/reviewrate/'} state={bookData}>Review and Rate</Button>}
+      {props.fromShowByAuthorNYT &&  <Button size="small" component={RRLink}   to={'/reviewrate/'} state={bookData}>Review and Rate</Button>}
       {props.fromGetAllReviews &&  <Button size="small" component={RRLink}   to={'/updatereview/'} state={bookData}>Update Review and Rating</Button>}
+      {props.fromGetAllReviews &&  <Button size="small" component={RRLink}   to={'/deletereview/'} state={bookData}>Delete Review</Button>}
 
      
      
