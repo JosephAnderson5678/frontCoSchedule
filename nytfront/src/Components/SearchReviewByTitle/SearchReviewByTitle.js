@@ -15,8 +15,7 @@ function SearchReviewByTitle() {
     const textFieldRef = useRef("");
     const navigate = useNavigate();
     const [books,getBooks]=useState();
-    const fromGetAllReviews=true;
-
+    const fromSearchReviewByTitle=true;
     const readTextFieldValue = () => {
   
       axios.get(APIURLS.searchReviewByTitle+ textFieldRef.current.value)
@@ -50,7 +49,7 @@ function SearchReviewByTitle() {
              summary= {book.NYTSummary} 
              review={book.review}
              stars= {book.stars} 
-             fromGetAllReviews={fromGetAllReviews}
+             fromSearchReviewByTitle={fromSearchReviewByTitle}
              IDFromReviews={book.id}
              ></ShowAPICard>
        

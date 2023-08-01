@@ -18,13 +18,16 @@ function ShowAPICard(props) {
     author: props.author,
     summary: props.summary,
     fromShowByAuthorNYT: props.fromShowByAuthorNYT,
+    fromShowByTitleNYT: props.fromShowByTitleNYT,
     fromGetAllReviews: props.fromGetAllReviews,
+    fromSearchReviewByTitle: props.fromSearchReviewByTitle,
+    fromSearchReviewByAuthor: props.fromSearchReviewByAuthor,
     IDFromReviews: props.IDFromReviews,
     review: props.review,
     stars: props.stars,
 
-  };    /* Normally I would send in an ID but the NYT API UUID and URI are broken */
-  const [ratingValue, setRatingValue] = React.useState(props.stars);
+  };    /* Normally I would send in an ID from the API but the NYT API UUID and URI are broken */
+  const [ratingValue, setRatingValue] = React.useState(bookData.stars);
 
 
       return (
@@ -35,25 +38,25 @@ function ShowAPICard(props) {
       
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-        Title: {props.title}
+        Title: {bookData.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
             <p>
-            Author: {props.author}
+            Author: {bookData.author}
             </p>
            <div>
-            Summary: {props.summary}
+            Summary: {bookData.summary}
            </div>
-           {props.fromGetAllReviews &&  <div>Review: {props.review}</div>}
-           {props.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
+           {(bookData.fromGetAllReviews || bookData.fromSearchReviewByTitle || bookData.fromSearchReviewByAuthor) &&  <div>Review: {bookData.review}</div>}
+           {(bookData.fromGetAllReviews || bookData.fromSearchReviewByTitle || bookData.fromSearchReviewByAuthor) &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
 
         </Typography>
       </CardContent>
       <CardActions>
 
-      {props.fromShowByAuthorNYT &&  <Button size="small" component={RRLink}   to={'/reviewrate/'} state={bookData}>Review and Rate</Button>}
-      {props.fromGetAllReviews &&  <Button size="small" component={RRLink}   to={'/updatereview/'} state={bookData}>Update Review and Rating</Button>}
-      {props.fromGetAllReviews &&  <Button size="small" component={RRLink}   to={'/deletereview/'} state={bookData}>Delete Review</Button>}
+      {(bookData.fromShowByAuthorNYT || bookData.fromShowByTitleNYT) &&  <Button size="small" component={RRLink}   to={'/reviewrate/'} state={bookData}>Review and Rate</Button>}
+      {(bookData.fromGetAllReviews || bookData.fromSearchReviewByTitle || bookData.fromSearchReviewByAuthor) &&  <Button size="small" component={RRLink}   to={'/updatereview/'} state={bookData}>Update Review and Rating</Button>}
+      {(bookData.fromGetAllReviews || bookData.fromSearchReviewByTitle || bookData.fromSearchReviewByAuthor) &&  <Button size="small" component={RRLink}   to={'/deletereview/'} state={bookData}>Delete Review</Button>}
 
      
      

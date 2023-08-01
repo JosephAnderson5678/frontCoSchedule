@@ -17,7 +17,6 @@ function ShowByAuthor(props){
     
     useEffect(() => {
    
-        //axios.get("http://localhost:3000/books/searchauthor/"+author)
         axios.get(APIURLS.searchAuthorAPIURL + author)
        .then(response => {
         console.log(response.data);

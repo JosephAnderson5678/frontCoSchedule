@@ -16,7 +16,7 @@ function SearchReviewByAuthor() {
     const navigate = useNavigate();
     const [books,getBooks]=useState();
     const fromGetAllReviews=true;
-
+    const fromSearchReviewByAuthor= true;
     const readTextFieldValue = () => {
   
       axios.get(APIURLS.searchReviewByAuthor+ textFieldRef.current.value)
@@ -50,7 +50,7 @@ function SearchReviewByAuthor() {
              summary= {book.NYTSummary} 
              review={book.review}
              stars= {book.stars} 
-             fromGetAllReviews={fromGetAllReviews}
+             fromSearchReviewByAuthor={fromSearchReviewByAuthor}
              IDFromReviews={book.id}
              ></ShowAPICard>
        
