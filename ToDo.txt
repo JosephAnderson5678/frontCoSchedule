@@ -5,7 +5,8 @@
 2. possibility to combine initial review component with update because they have so much in common. Would this help maintainability or is it not worth doing that way? I could
 code it either way, but just comes down to senior engineers opinion. Right now it is its own seperate feature, but that is a lot of extra code to maintain. 
 
-3. Code it so when the user updates the review it automatically displays the new review. This means make an API call for the new details. 
+3. Code it so when the user updates the review it automatically displays the new review. This means make an API call for the new details by using the fact we have an ID system 
+once a book has finished being reviewed.  
 
 
 4. LOW PRIORITY   
@@ -26,10 +27,7 @@ Still works but need to test and figure out. Low priority because it still works
 
 8. Datagrid from material UI.
 
-9. make a 404 page and put it into the router as the default.
 
 10. clean up the defined but never used stuff
 
 
-11. Change the places where it says "  fromGetAllReviews={fromGetAllReviews} " to be more accurate about where it came from by using a combination of 
-fromGetAllReviews || fromsearchreviewbyauthor && shortcircuitlogic just to be less sloppy and in case it is ever needed later.

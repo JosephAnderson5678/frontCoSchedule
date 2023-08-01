@@ -11,7 +11,7 @@ function ShowByTitleNYT(props){
     const [books,getBooks]=useState();
     const [showData,getShowData]= useState(true);
     let { title } = useParams(); 
-
+    const fromShowByTitleNYT=true;
 
  
     
@@ -38,7 +38,7 @@ function ShowByTitleNYT(props){
             author= {book.book_author}
             title= {book.book_title}
             summary= {book.summary}  
-            fromShowByAuthorNYT= {true} // {/* DO NOT REMOVE: This is title not author but keep it this way it is used to configure some stuff in ShowAPICard */}
+            fromShowByTitleNYT= {fromShowByTitleNYT} 
             ></ShowAPICard>
           </Grid>
 ))}

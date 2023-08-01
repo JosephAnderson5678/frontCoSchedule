@@ -13,6 +13,8 @@ import SearchTitleNYT from './Components/NYTComponents/SearchTitleNYT/SearchTitl
 import ShowByTitleNYT from './Components/NYTComponents/SearchTitleNYT/ShowByTitleNYT/ShowByTitleNYT';
 import SearchReviewByAuthor from './Components/SearchReviewByAuthor/SearchReviewByAuthor';
 import SearchReviewByTitle from './Components/SearchReviewByTitle/SearchReviewByTitle';
+import FourOhFourNotFound from './Components/FourOhFourNotFound/FourOhFourNotFound';
+import HomePage from './Components/HomePage/HomePage';
 function App() {
 
   return (
@@ -32,6 +34,9 @@ function App() {
         <Route path="/deletereview/" element={<DeleteReview />} />
         <Route path="/searchreviewbyauthor/" element={<SearchReviewByAuthor/>}/>
         <Route path="/searchreviewbytitle/" element={<SearchReviewByTitle/>}/>
+        <Route path='*' element={<FourOhFourNotFound />}/>
+        <Route path="/" element={ <HomePage/> }/>
+
 
 
       </Routes>
