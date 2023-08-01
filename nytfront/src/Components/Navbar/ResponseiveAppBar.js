@@ -57,13 +57,13 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Home
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="home"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -90,8 +90,16 @@ function ResponsiveAppBar() {
               }}
             > 
             {/* MOBILE MENU*/ }
+          
             <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/getallreviews/">
                     <Typography textAlign="center">All Reviews</Typography>
+                </MenuItem>
+                
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbyauthor/">
+                    <Typography textAlign="center">Search Review By Author</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbytitle/">
+                    <Typography textAlign="center">Search Review By Title</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthorNYT/">
                     <Typography textAlign="center">Search NYT By Author</Typography>
@@ -101,13 +109,6 @@ function ResponsiveAppBar() {
                 <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchtitleNYT/">
                     <Typography textAlign="center">Search NYT By Title</Typography>
                 </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbyauthor/">
-                    <Typography textAlign="center">Search Review By Author</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbytitle/">
-                    <Typography textAlign="center">Search Review By Title</Typography>
-                </MenuItem>
-               
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -115,7 +116,7 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -127,13 +128,22 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Home 
+            {/* End of Mobile Menu*/ }
           </Typography>
                       {/* BIG NON MOBILE MENU*/ }
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>  
+        
           <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/getallreviews/">
                     <Typography textAlign="center">All Reviews</Typography>
+                </MenuItem>
+                
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbyauthor/">
+                    <Typography textAlign="center">Search Review By Author</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbytitle/">
+                    <Typography textAlign="center">Search Review By Title</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthorNYT/">
                     <Typography textAlign="center">Search NYT By Author</Typography>
@@ -142,12 +152,6 @@ function ResponsiveAppBar() {
                    
                 <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchtitleNYT/">
                     <Typography textAlign="center">Search NYT By Title</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbyauthor/">
-                    <Typography textAlign="center">Search Review By Author</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbytitle/">
-                    <Typography textAlign="center">Search Review By Title</Typography>
                 </MenuItem>
 
           
