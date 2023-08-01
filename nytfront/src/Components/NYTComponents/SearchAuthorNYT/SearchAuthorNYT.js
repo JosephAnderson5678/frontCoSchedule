@@ -18,7 +18,7 @@ function SearchAuthorNYT() {
 
     return (
         <>
-        <header style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Author to Search for:</header>
+        <header style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Author to Search for (exact name only):</header>
         <Container maxWidth="sm" style={{display:"flex", alignItems:"center"}} >
             <TextField
             id="outlined-helperText"

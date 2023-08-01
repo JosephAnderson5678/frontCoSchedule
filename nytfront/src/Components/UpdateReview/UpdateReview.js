@@ -22,7 +22,8 @@ function UpdateReview(props){
       const [openErrorMessage, setOpenErrorMessage] = useState("")
       const [openSuccess, setOpenSuccess] = useState(false)
       const [openSuccessMessage, setOpenSuccessMessage] = useState("");
-        
+      const [btnDisabled, setBtnDisabled] = useState(false)
+
     
        // this controls whether or not to highlight the textbox and its colors in red to let the user know if their is an error. 
     const [textFieldErrorState, setTextFieldErrorState] = useState({
@@ -70,8 +71,8 @@ function UpdateReview(props){
               setOpenError(false);
               setOpenErrorMessage("")
               setOpenSuccessMessage(" Review has been updated in the database")
-            console.log("response:")
-            console.log(response)
+              setBtnDisabled(true); // disable button so they can't accidently try deleting the same review twice.
+
           })
             .catch((error) => {
               setOpenError(true)  
@@ -146,7 +147,7 @@ function UpdateReview(props){
           setNewRatingValue(newValue);
         }} />
 
-       <Button variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
+       <Button variant="contained" size="large" disabled={btnDisabled} style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
        </Box>
       
     

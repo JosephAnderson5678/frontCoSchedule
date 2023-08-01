@@ -22,7 +22,7 @@ function GetAllReviews(props){
      
 
             <>
-             <h1 style={{textAlign: 'center'}} >Book results.</h1>
+             <h1 style={{textAlign: 'center'}} >Book results:</h1>
           <Grid container spacing={{ xs: 0, md: 0 }} columns={{ xs: 4, sm: 8, md: 12 }}  rowSpacing={3} >
            {books?.map(book => ( 
              <Grid xs={2} sm={4} md={4} key={book.id}>

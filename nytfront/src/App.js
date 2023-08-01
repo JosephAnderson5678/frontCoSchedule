@@ -2,15 +2,17 @@ import './App.css';
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchAuthorNYT from './Components/SearchAuthor/SearchAuthorNYT';
-import ShowByAuthorNYT from './Components/SearchAuthor/ShowByAuthorNYT/ShowByAuthorNYT';
+import SearchAuthorNYT from './Components/NYTComponents/SearchAuthorNYT/SearchAuthorNYT';
+import ShowByAuthorNYT from './Components/NYTComponents/SearchAuthorNYT/ShowByAuthorNYT/ShowByAuthorNYT';
 import ReviewRate from './Components/ReviewRate/ReviewRate';
 import ResponsiveAppBar from './Components/Navbar/ResponseiveAppBar';
 import GetAllReviews from './Components/GetAllReviews/GetAllReviews';
 import UpdateReview from './Components/UpdateReview/UpdateReview';
 import DeleteReview from './Components/DeleteReview/DeleteReview';
-import SearchTitleNYT from './Components/SearchTitleNYT/SearchTitleNYT';
-import ShowByTitleNYT from './Components/SearchTitleNYT/ShowByTitleNYT/ShowByTitleNYT';
+import SearchTitleNYT from './Components/NYTComponents/SearchTitleNYT/SearchTitleNYT';
+import ShowByTitleNYT from './Components/NYTComponents/SearchTitleNYT/ShowByTitleNYT/ShowByTitleNYT';
+import SearchReviewByAuthor from './Components/SearchReviewByAuthor/SearchReviewByAuthor';
+import SearchReviewByTitle from './Components/SearchReviewByTitle/SearchReviewByTitle';
 function App() {
 
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/getallreviews/" element={<GetAllReviews/>}/>
         <Route path="/updatereview/" element={<UpdateReview/>}/>
         <Route path="/deletereview/" element={<DeleteReview />} />
+        <Route path="/searchreviewbyauthor/" element={<SearchReviewByAuthor/>}/>
+        <Route path="/searchreviewbytitle/" element={<SearchReviewByTitle/>}/>
 
 
       </Routes>

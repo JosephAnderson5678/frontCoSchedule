@@ -13,6 +13,7 @@ function DeleteReview(props){
     const bookData = location.state;
     const [ratingValue, setRatingValue] = React.useState(bookData.stars);
     const [newRatingValue, setNewRatingValue] = React.useState(0);
+    const [btnDisabled, setBtnDisabled] = useState(false)
 
     const reviewFieldRef = useRef("");
     const [textFieldErrorMessages, setTextFieldErrorMessages] = useState({
@@ -39,7 +40,8 @@ function DeleteReview(props){
              setOpenError(false);
              setOpenErrorMessage("")
              setOpenSuccessMessage(" Review has been deleted from the database")
-          })
+             setBtnDisabled(true); // disable button so they can't accidently try deleting the same review twice.
+            })
           .catch(error => {
             if (error.response) {
               console.log(error.response.data);
@@ -110,7 +112,7 @@ function DeleteReview(props){
 
 
 
-       <Button variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={DeleteReviewAxios} >Delete Review</Button>
+       <Button variant="contained" size="large" disabled={btnDisabled} style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={DeleteReviewAxios} >Delete Review</Button>
        </Box>
       
     

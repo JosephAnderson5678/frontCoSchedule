@@ -2,23 +2,22 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import APIURLS from '../../../Constants/APIURLs'
+import APIURLS from '../../../../Constants/APIURLs'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-import ShowAPICard from "../../ShowAPICard/ShowAPICard";
-function ShowByAuthor(props){
+import ShowAPICard from "../../../ShowAPICard/ShowAPICard";
+function ShowByTitleNYT(props){
     const [books,getBooks]=useState();
     const [showData,getShowData]= useState(true);
-    let { author } = useParams(); 
+    let { title } = useParams(); 
 
 
  
     
     useEffect(() => {
    
-        //axios.get("http://localhost:3000/books/searchauthor/"+author)
-        axios.get(APIURLS.searchAuthorAPIURL + author)
+        axios.get(APIURLS.searchTitleAPIURL + title)
        .then(response => {
         console.log(response.data);
         const allBooks= response.data.APIResponse;
@@ -29,9 +28,7 @@ function ShowByAuthor(props){
 
 
     return (
-     
-
-     <>
+    <>
       <h1 style={{textAlign: 'center'}} >Book results.</h1>
       <Grid container spacing={{ xs: 0, md: 0 }} columns={{ xs: 4, sm: 8, md: 12 }}  rowSpacing={3} >
         {books?.map(book => ( 
@@ -41,14 +38,15 @@ function ShowByAuthor(props){
             author= {book.book_author}
             title= {book.book_title}
             summary= {book.summary}  
-            fromShowByAuthor= {true}
+            fromShowByAuthorNYT= {true} // {/* DO NOT REMOVE: This is title not author but keep it this way it is used to configure some stuff in ShowAPICard */}
             ></ShowAPICard>
           </Grid>
 ))}
+
       </Grid>
     </>
 
     );
 }
 
-export default ShowByAuthor
+export default ShowByTitleNYT

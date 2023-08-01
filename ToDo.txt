@@ -8,7 +8,8 @@ code it either way, but just comes down to senior engineers opinion. Right now i
 3. Code it so when the user updates the review it automatically displays the new review. This means make an API call for the new details. 
 
 
-4.       <Route path="/updatereview/" element={<UpdateReview/>}/>
+4. LOW PRIORITY   
+    <Route path="/updatereview/" element={<UpdateReview/>}/>
 Missing ID? shouldn't it be like
       <Route path="/showbyauthor/:author" element={<ShowByAuthor />} />
 
@@ -16,19 +17,19 @@ Missing ID? shouldn't it be like
 Still works but need to test and figure out. Low priority because it still works.
 
 
-5. code SEARCH REVIEW BY ID so it can be used when displaying data.
+5. lorem ipsum make sure things like cards and such fit correctly
 
-6. code search review by author (our database not NYT)
-
-7. code search review by title  (our database not NYT)
-
-8. lorem ipsum make sure things like cards and such fit correctly
-
-11. figure out why the text box is misaligned
+6. figure out why the text box is misaligned
 
 
-12. Ongoing: make code prettier/more readable especially HTML.
+7. Ongoing: make code prettier/more readable especially HTML.
 
-13. Datagrid from material UI.
+8. Datagrid from material UI.
 
-14. make a 404 page and put it into the router as the default.
+9. make a 404 page and put it into the router as the default.
+
+10. clean up the defined but never used stuff
+
+
+11. Change the places where it says "  fromGetAllReviews={fromGetAllReviews} " to be more accurate about where it came from by using a combination of 
+fromGetAllReviews || fromsearchreviewbyauthor && shortcircuitlogic just to be less sloppy and in case it is ever needed later.

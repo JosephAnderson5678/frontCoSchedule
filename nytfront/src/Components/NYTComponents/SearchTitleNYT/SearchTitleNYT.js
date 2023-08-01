@@ -18,7 +18,7 @@ function SearchTitleNYT() {
 
     return (
         <>
-        <header style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Title to Search for:</header>
+        <header style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Title to Search for (exact title only):</header>
         <Container maxWidth="sm" style={{display:"flex", alignItems:"center"}} >
             <TextField
             id="outlined-helperText"

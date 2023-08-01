@@ -94,12 +94,18 @@ function ResponsiveAppBar() {
                     <Typography textAlign="center">All Reviews</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthorNYT/">
-                    <Typography textAlign="center">NYT By Author</Typography>
+                    <Typography textAlign="center">Search NYT By Author</Typography>
                 </MenuItem>
                
                    
                 <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchtitleNYT/">
-                    <Typography textAlign="center">NYT By Title</Typography>
+                    <Typography textAlign="center">Search NYT By Title</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbyauthor/">
+                    <Typography textAlign="center">Search Review By Author</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbytitle/">
+                    <Typography textAlign="center">Search Review By Title</Typography>
                 </MenuItem>
                
             </Menu>
@@ -129,14 +135,20 @@ function ResponsiveAppBar() {
           <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/getallreviews/">
                     <Typography textAlign="center">All Reviews</Typography>
                 </MenuItem>
-            <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthorNYT/">
-                    <Typography textAlign="center">NYT By Author</Typography>
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchauthorNYT/">
+                    <Typography textAlign="center">Search NYT By Author</Typography>
                 </MenuItem>
-              
+               
+                   
                 <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchtitleNYT/">
-                    <Typography textAlign="center">NYT By Title</Typography>
+                    <Typography textAlign="center">Search NYT By Title</Typography>
                 </MenuItem>
-
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbyauthor/">
+                    <Typography textAlign="center">Search Review By Author</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}  component={RRLink}   to="/searchreviewbytitle/">
+                    <Typography textAlign="center">Search Review By Title</Typography>
+                </MenuItem>
 
           
           </Box>
