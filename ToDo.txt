@@ -6,28 +6,15 @@
 code it either way, but just comes down to senior engineers opinion. Right now it is its own seperate feature, but that is a lot of extra code to maintain. 
 
 3. Code it so when the user updates the review it automatically displays the new review. This means make an API call for the new details by using the fact we have an ID system 
-once a book has finished being reviewed.  
+once a book has finished being reviewed.  This also means changing the app.js routes to use :id and the way things are sent in. This is a major rework, but worth it long term. 
+Not a high priority right now.
+4. Datagrid from material UI to display it another way if the user wants it that way. <--- requires get by ID to be working first. 
 
+5. fix that a text field is misaligned.
 
-4. LOW PRIORITY   
-    <Route path="/updatereview/" element={<UpdateReview/>}/>
-Missing ID? shouldn't it be like
-      <Route path="/showbyauthor/:author" element={<ShowByAuthor />} />
+6. test out longer review messages. 
 
-      also       <Route path="/deletereview/" element={<ShowByAuthor />} />
-Still works but need to test and figure out. Low priority because it still works.
+7. Add security with OAuth.
 
-
-5. lorem ipsum make sure things like cards and such fit correctly
-
-6. figure out why the text box is misaligned
-
-
-7. Ongoing: make code prettier/more readable especially HTML.
-
-8. Datagrid from material UI.
-
-
-10. clean up the defined but never used stuff
 
 

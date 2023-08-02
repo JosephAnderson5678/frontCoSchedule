@@ -1,22 +1,17 @@
 import { useParams } from "react-router-dom";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, } from "react";
 import axios from 'axios';
-import Button from '@mui/material/Button';
 import APIURLS from '../../../../Constants/APIURLs'
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import ShowAPICard from "../../../ShowAPICard/ShowAPICard";
 function ShowByTitleNYT(props){
     const [books,getBooks]=useState();
-    const [showData,getShowData]= useState(true);
     let { title } = useParams(); 
     const fromShowByTitleNYT=true;
 
  
     
     useEffect(() => {
-   
         axios.get(APIURLS.searchTitleAPIURL + title)
        .then(response => {
         console.log(response.data);
@@ -45,8 +40,7 @@ function ShowByTitleNYT(props){
 
       </Grid>
     </>
-
-    );
+  );
 }
 
 export default ShowByTitleNYT

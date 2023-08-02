@@ -1,8 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
-import { Container,Grid,Box } from "@mui/material";
+import {  useLocation } from "react-router-dom";
+import { Container,Box } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Rating from '@mui/material/Rating';
 import ErrorSuccessAlerts from "../ErrorSuccessAlerts/ErrorSuccessAlerts";
 import axios from 'axios';
@@ -16,7 +16,7 @@ function ReviewRate(props){
     const reviewFieldRef = useRef("");
     const [textFieldErrorMessages, setTextFieldErrorMessages] = useState({
         reviewErrorMessage: "",
-      }); // Use it like this because if the client wants more variables added later you can just add them here more easily. 
+      });  
       const [openError, setOpenError] = useState(false)
       const [openErrorMessage, setOpenErrorMessage] = useState("")
       const [openSuccess, setOpenSuccess] = useState(false)
@@ -44,7 +44,6 @@ function ReviewRate(props){
       const validator = require('validator')
 
       if (validator.isEmpty( reviewFieldRef.current.value) === true){ // true = empty string
-
         setOpenError(true)  
         setOpenSuccess(false);
         setOpenErrorMessage("Required information incorrect or empty please fix.")
@@ -54,9 +53,7 @@ function ReviewRate(props){
           });
       }else{
         resetAllFields();  // resets the error message and colors once something is properly entered.
-      
-        console.log("got to here: " + reviewFieldRef.current.value)
-        axios.post(APIURLS.createReview, {
+            axios.post(APIURLS.createReview, {
             review: reviewFieldRef.current.value,
             stars:  ratingValue,
             title: bookData.title,
@@ -90,17 +87,9 @@ function ReviewRate(props){
         <>
         <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Review Book </h1>
         <Container maxWidth="lg"  sx={{ borderColor: 'black', borderStyle:'solid', borderRadius: '16px' , pb: 5, pt: 5, marginTop: -5}}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        </Grid>
-        <p>
-        title: {bookData.title}
-        </p>
-           <p>
-           author: {bookData.author}
-           </p>
-              <p>
-              summary: {bookData.summary}
-              </p>
+          <p>title: {bookData.title}</p>
+          <p>author: {bookData.author}</p>
+          <p>summary: {bookData.summary}</p>
        </Container>
        <ErrorSuccessAlerts
        openError={openError}
@@ -127,17 +116,15 @@ function ReviewRate(props){
             },
           }}
           />
-
-<Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue}
-        onChange={(event, newValue) => {
-          setRatingValue(newValue);
+        <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue}
+          onChange={(event, newValue) => {
+            setRatingValue(newValue);
         }} />
-
-       <Button variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
+        <Button variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
        </Box>
       
     
-              </>
+        </>
     )
 }
 

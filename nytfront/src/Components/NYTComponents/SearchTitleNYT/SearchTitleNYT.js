@@ -1,11 +1,8 @@
-import {
-    Link as RRLink, // the RRLink is because material UI also uses link this clears up any confusion.
-     } from "react-router-dom";
-     import TextField from '@mui/material/TextField';
-     import { Button } from "@mui/material";
-     import React, { useEffect, useState, useRef } from "react";
-     import { useNavigate } from 'react-router-dom';
-     import { Container } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import { Button } from "@mui/material";
+import React, { useRef } from "react";
+import { useNavigate } from 'react-router-dom';
+import { Container } from "@mui/material";
 
 function SearchTitleNYT() {
     const textFieldRef = useRef("");

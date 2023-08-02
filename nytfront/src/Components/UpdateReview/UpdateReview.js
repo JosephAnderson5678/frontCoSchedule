@@ -1,8 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
-import { Container,Grid,Box } from "@mui/material";
+import {  useLocation } from "react-router-dom";
+import { Container,Box } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
-import React, { useEffect, useState, useRef } from "react";
+import React, {  useState, useRef } from "react";
 import Rating from '@mui/material/Rating';
 import ErrorSuccessAlerts from "../ErrorSuccessAlerts/ErrorSuccessAlerts";
 import axios from 'axios';
@@ -11,7 +11,7 @@ import APIURLS from "../../Constants/APIURLs";
 function UpdateReview(props){
     const location = useLocation();
     const bookData = location.state;
-    const [ratingValue, setRatingValue] = React.useState(bookData.stars);
+    const [ratingValue] = React.useState(bookData.stars);
     const [newRatingValue, setNewRatingValue] = React.useState(0);
 
     const reviewFieldRef = useRef("");
@@ -94,28 +94,14 @@ function UpdateReview(props){
         <>
         <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Update Your Review of a Book </h1>
         <Container maxWidth="lg"  sx={{ borderColor: 'black', borderStyle:'solid', borderRadius: '16px' , pb: 5, pt: 5, marginTop: -5}}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        </Grid>
-        <p>
-        title: {bookData.title}
-        </p>
-        <p>
-        ID: {bookData.IDFromReviews}
-        </p>
-           <p>
-           author: {bookData.author}
-           </p>
-              <div>
-              summary: {bookData.summary}
-              </div>
-              <div>Current review: {bookData.review}</div>
-              {bookData.fromGetAllReviews &&  <p>Current Rating:  </p>}
-
-              {bookData.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
-
-       </Container>
+          <p>title: {bookData.title}</p>
+          <p>author: {bookData.author}</p>
+          <div>summary: {bookData.summary}</div>
+          <div>Current review: {bookData.review}</div>
+          {bookData.fromGetAllReviews &&  <p>Current Rating:  </p>}
+          {bookData.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
+        </Container>
        <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Updated Details: </h1>
-
        <ErrorSuccessAlerts
        openError={openError}
        setOpenError={setOpenError}
@@ -128,7 +114,7 @@ function UpdateReview(props){
        ></ErrorSuccessAlerts>
 
        <Box style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} >
-       <TextField
+        <TextField
           id="outlined-helperText"
           label="Review:"
           inputRef={reviewFieldRef}
@@ -142,12 +128,11 @@ function UpdateReview(props){
           }}
           />
 
-<Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={newRatingValue}
-        onChange={(event, newValue) => {
-          setNewRatingValue(newValue);
+        <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={newRatingValue}
+          onChange={(event, newValue) => {
+            setNewRatingValue(newValue);
         }} />
-
-       <Button variant="contained" size="large" disabled={btnDisabled} style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
+        <Button variant="contained" size="large" disabled={btnDisabled} style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
        </Box>
       
     

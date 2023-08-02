@@ -1,21 +1,15 @@
-import {
-    Link as RRLink, // the RRLink is because material UI also uses link this clears up any confusion.
-     } from "react-router-dom";
-     import TextField from '@mui/material/TextField';
-     import { Button } from "@mui/material";
-     import React, { useEffect, useState, useRef } from "react";
-     import { useNavigate } from 'react-router-dom';
-     import { Container } from "@mui/material";
-     import axios from 'axios';
-     import Grid from '@mui/material/Unstable_Grid2';
-     import ShowAPICard from '../ShowAPICard/ShowAPICard';
-     import APIURLS from "../../Constants/APIURLs";
+import TextField from '@mui/material/TextField';
+import { Button } from "@mui/material";
+import React, {  useState, useRef } from "react";
+import { Container } from "@mui/material";
+import axios from 'axios';
+import Grid from '@mui/material/Unstable_Grid2';
+import ShowAPICard from '../ShowAPICard/ShowAPICard';
+import APIURLS from "../../Constants/APIURLs";
 
 function SearchReviewByAuthor() {
     const textFieldRef = useRef("");
-    const navigate = useNavigate();
     const [books,getBooks]=useState();
-    const fromGetAllReviews=true;
     const fromSearchReviewByAuthor= true;
     const readTextFieldValue = () => {
   
