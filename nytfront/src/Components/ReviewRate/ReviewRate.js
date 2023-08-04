@@ -17,11 +17,12 @@ function ReviewRate(props){
     const [textFieldErrorMessages, setTextFieldErrorMessages] = useState({
         reviewErrorMessage: "",
       });  
-      const [openError, setOpenError] = useState(false)
-      const [openErrorMessage, setOpenErrorMessage] = useState("")
-      const [openSuccess, setOpenSuccess] = useState(false)
-      const [openSuccessMessage, setOpenSuccessMessage] = useState("");
-        
+    const [openError, setOpenError] = useState(false)
+    const [openErrorMessage, setOpenErrorMessage] = useState("")
+    const [openSuccess, setOpenSuccess] = useState(false)
+    const [openSuccessMessage, setOpenSuccessMessage] = useState("");
+    const [btnDisabled, setBtnDisabled] = useState(false)
+
     
        // this controls whether or not to highlight the textbox and its colors in red to let the user know if their is an error. 
     const [textFieldErrorState, setTextFieldErrorState] = useState({
@@ -66,6 +67,8 @@ function ReviewRate(props){
               setOpenError(false);
               setOpenErrorMessage("")
               setOpenSuccessMessage(" Added to Database")
+              setBtnDisabled(true); // disable button so they can't accidently try reviewing the same book twice easily.
+
           })
             .catch((error) => {
               setOpenError(true)  
@@ -120,7 +123,7 @@ function ReviewRate(props){
           onChange={(event, newValue) => {
             setRatingValue(newValue);
         }} />
-        <Button variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
+        <Button disabled={btnDisabled} variant="contained" size="large" style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
        </Box>
       
     

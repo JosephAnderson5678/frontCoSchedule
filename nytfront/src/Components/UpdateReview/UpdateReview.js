@@ -6,6 +6,7 @@ import React, {  useState, useRef } from "react";
 import Rating from '@mui/material/Rating';
 import ErrorSuccessAlerts from "../ErrorSuccessAlerts/ErrorSuccessAlerts";
 import axios from 'axios';
+import Grid from '@mui/material/Unstable_Grid2';
 import APIURLS from "../../Constants/APIURLs";
 
 function UpdateReview(props){
@@ -101,7 +102,7 @@ function UpdateReview(props){
           {bookData.fromGetAllReviews &&  <p>Current Rating:  </p>}
           {bookData.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
         </Container>
-       <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Updated Details: </h1>
+        <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'20px'}}> Updated Details: </h1>
        <ErrorSuccessAlerts
        openError={openError}
        setOpenError={setOpenError}
@@ -113,13 +114,20 @@ function UpdateReview(props){
        setOpenSuccessMessage={setOpenSuccessMessage}
        ></ErrorSuccessAlerts>
 
-       <Box style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} >
+       <Box style={{ width: 350, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} >
+       <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        >
         <TextField
           id="outlined-helperText"
           label="Review:"
           inputRef={reviewFieldRef}
           helperText={textFieldErrorMessages.reviewErrorMessage}
           error={textFieldErrorState.reviewErrorColor}
+          multiline
           inputProps={{
             style: {
               height: "250px",
@@ -133,8 +141,8 @@ function UpdateReview(props){
             setNewRatingValue(newValue);
         }} />
         <Button variant="contained" size="large" disabled={btnDisabled} style={{ width: 200, height: 55, margin: "10px", marginLeft: 'auto', marginRight: 'auto', }} onClick={readTextFieldValue} >Add Review</Button>
+      </Grid>
        </Box>
-      
     
               </>
     )

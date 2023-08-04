@@ -10,11 +10,9 @@ once a book has finished being reviewed.  This also means changing the app.js ro
 Not a high priority right now.
 4. Datagrid from material UI to display it another way if the user wants it that way. <--- requires get by ID to be working first. 
 
-5. fix that a text field is misaligned.
 
-6. test out longer review messages. 
 
-7. Add security with OAuth.
+5. Add security with OAuth.
 
 
 

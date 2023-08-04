@@ -72,7 +72,6 @@ function DeleteReview(props){
         <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Delete Your Review of a Book </h1>
         <Container maxWidth="lg"  sx={{ borderColor: 'black', borderStyle:'solid', borderRadius: '16px' , pb: 5, pt: 5, marginTop: -5}}>
           <p>title: {bookData.title}</p>
-          <p>ID: {bookData.IDFromReviews}</p>
           <p>author: {bookData.author}</p>
           <div>summary: {bookData.summary}</div>
           <div>Current review: {bookData.review}</div>
