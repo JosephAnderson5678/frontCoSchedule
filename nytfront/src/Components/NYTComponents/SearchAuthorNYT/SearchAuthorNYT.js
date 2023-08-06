@@ -9,7 +9,6 @@ function SearchAuthorNYT() {
     const navigate = useNavigate();
 
     const readTextFieldValue = () => {
-        console.log(textFieldRef.current.value);
         navigate('/showbyauthorNYT/'+textFieldRef.current.value);
       }
 

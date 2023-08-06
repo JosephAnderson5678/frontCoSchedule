@@ -28,7 +28,7 @@ function DeleteReview(props){
 
       
     const DeleteReviewAxios = () => {
-        axios.delete(APIURLS.deleteReview+bookData.IDFromReviews, {
+        axios.delete(APIURLS.deleteReview+bookData.id, {
           })
           .then(response => {
              //update the other components so they correctly display the updated data
@@ -71,12 +71,12 @@ function DeleteReview(props){
         <>
         <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Delete Your Review of a Book </h1>
         <Container maxWidth="lg"  sx={{ borderColor: 'black', borderStyle:'solid', borderRadius: '16px' , pb: 5, pt: 5, marginTop: -5}}>
-          <p>title: {bookData.title}</p>
-          <p>author: {bookData.author}</p>
-          <div>summary: {bookData.summary}</div>
-          <div>Current review: {bookData.review}</div>
-          {bookData.fromGetAllReviews &&  <p>Current Rating:  </p>}
-          {bookData.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
+          <p><strong>Title: </strong> {bookData.title}</p>
+          <p><strong>Author: </strong> {bookData.author}</p>
+          <div><strong>Summary: </strong>{bookData.NYTSummary}</div>
+          <div><strong>Current review: </strong>{bookData.review}</div>
+           <p><strong>Current Rating: </strong>  </p>
+         <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>
         </Container>
 
        <ErrorSuccessAlerts

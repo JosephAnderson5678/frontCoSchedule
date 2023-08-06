@@ -59,7 +59,7 @@ function ReviewRate(props){
             stars:  ratingValue,
             title: bookData.title,
             author: bookData.author,
-            NYTSummary: bookData.summary,
+            NYTSummary: bookData.NYTSummary,
         })
           .then((response) => {
               //update the other components so they correctly display the updated data
@@ -90,9 +90,9 @@ function ReviewRate(props){
         <>
         <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Review Book </h1>
         <Container maxWidth="lg"  sx={{ borderColor: 'black', borderStyle:'solid', borderRadius: '16px' , pb: 5, pt: 5, marginTop: -5}}>
-          <p>title: {bookData.title}</p>
-          <p>author: {bookData.author}</p>
-          <p>summary: {bookData.summary}</p>
+          <p><strong>Title: </strong> {bookData.title}</p>
+          <p><strong>Author: </strong> {bookData.author}</p>
+          <p><strong>summary: </strong> {bookData.NYTSummary}</p>
        </Container>
        <ErrorSuccessAlerts
        openError={openError}
@@ -112,6 +112,7 @@ function ReviewRate(props){
           inputRef={reviewFieldRef}
           helperText={textFieldErrorMessages.reviewErrorMessage}
           error={textFieldErrorState.reviewErrorColor}
+          multiline
           inputProps={{
             style: {
               height: "250px",

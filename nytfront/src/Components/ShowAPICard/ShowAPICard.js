@@ -15,13 +15,13 @@ function ShowAPICard(props) {
   const bookData = {
     title: props.title,
     author: props.author,
-    summary: props.summary,
+    NYTSummary: props.summary,
     fromShowByAuthorNYT: props.fromShowByAuthorNYT,
     fromShowByTitleNYT: props.fromShowByTitleNYT,
     fromGetAllReviews: props.fromGetAllReviews,
     fromSearchReviewByTitle: props.fromSearchReviewByTitle,
     fromSearchReviewByAuthor: props.fromSearchReviewByAuthor,
-    IDFromReviews: props.IDFromReviews,
+    id: props.IDFromReviews,
     review: props.review,
     stars: props.stars,
 /* Normally I would send in an ID from the API but the NYT API UUID and URI are broken */
@@ -36,7 +36,7 @@ function ShowAPICard(props) {
       </Typography>
       <Typography variant="body2" color="text.secondary">
         <p>Author: {bookData.author}</p>
-        <div>Summary: {bookData.summary}</div>
+        <div>Summary: {bookData.NYTSummary}</div>
         {(bookData.fromGetAllReviews || bookData.fromSearchReviewByTitle || bookData.fromSearchReviewByAuthor) &&  <div>Review: {bookData.review}</div>}
         {(bookData.fromGetAllReviews || bookData.fromSearchReviewByTitle || bookData.fromSearchReviewByAuthor) &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
       </Typography>

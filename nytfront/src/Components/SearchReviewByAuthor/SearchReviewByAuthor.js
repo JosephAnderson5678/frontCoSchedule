@@ -17,6 +17,7 @@ function SearchReviewByAuthor() {
       .then(response => {
        const allBooks= response.data.book;
        getBooks(allBooks);
+      
        })
    }
       

@@ -12,6 +12,9 @@ import APIURLS from "../../Constants/APIURLs";
 function UpdateReview(props){
     const location = useLocation();
     const bookData = location.state;
+    
+   
+
     const [ratingValue] = React.useState(bookData.stars);
     const [newRatingValue, setNewRatingValue] = React.useState(0);
 
@@ -59,12 +62,12 @@ function UpdateReview(props){
         resetAllFields();  // resets the error message and colors once something is properly entered.
       
 
-        axios.put(APIURLS.updateReview +bookData.IDFromReviews, {
+        axios.put(APIURLS.updateReview +bookData.id, {
           review: reviewFieldRef.current.value,
           stars:  newRatingValue,
           title: bookData.title,
           author: bookData.author,
-          NYTSummary: bookData.summary,
+          NYTSummary: bookData.NYTSummary,
       })
           .then((response) => {
               //update the other components so they correctly display the updated data
@@ -95,12 +98,12 @@ function UpdateReview(props){
         <>
         <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'30px'}}> Update Your Review of a Book </h1>
         <Container maxWidth="lg"  sx={{ borderColor: 'black', borderStyle:'solid', borderRadius: '16px' , pb: 5, pt: 5, marginTop: -5}}>
-          <p>title: {bookData.title}</p>
-          <p>author: {bookData.author}</p>
-          <div>summary: {bookData.summary}</div>
-          <div>Current review: {bookData.review}</div>
-          {bookData.fromGetAllReviews &&  <p>Current Rating:  </p>}
-          {bookData.fromGetAllReviews &&  <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>}
+          <p><strong>Title: </strong> {bookData.title}</p>
+          <p><strong>Author: </strong> {bookData.author}</p>
+          <div><strong>Summary: </strong> {bookData.NYTSummary}</div>
+          <div><strong>Current Review: </strong> {bookData.review}</div>
+           <p> <strong>Current Rating: </strong>  </p>
+            <Rating name="half-rating" defaultValue={0} precision={0.5}   size="large" value={ratingValue} readOnly/>
         </Container>
         <h1 style={{ fontWeight:'bold',  textAlign: 'center', fontSize:'30px', paddingBottom:'20px'}}> Updated Details: </h1>
        <ErrorSuccessAlerts

@@ -14,7 +14,6 @@ function ShowByTitleNYT(props){
     useEffect(() => {
         axios.get(APIURLS.searchTitleAPIURL + title)
        .then(response => {
-        console.log(response.data);
         const allBooks= response.data.APIResponse;
         getBooks(allBooks);
         })

@@ -14,7 +14,6 @@ function ShowByAuthor(props){
     useEffect(() => {
         axios.get(APIURLS.searchAuthorAPIURL + author)
        .then(response => {
-        console.log(response.data);
         const allBooks= response.data.APIResponse;
         getBooks(allBooks);
         })

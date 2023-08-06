@@ -5,6 +5,7 @@ const APIURLS = {
     updateReview: "http://localhost:3000/books/updatebyid/",
     searchReviewByAuthor: "http://localhost:3000/books/searchreviewbyauthor/",
     searchReviewByTitle: "http://localhost:3000/books/searchreviewbytitle/",
+    getByID: "http://localhost:3000/books/getbyid/",
     // NYT 
     searchAuthorAPIURL: "http://localhost:3000/books/searchauthorNYT/",
     searchTitleAPIURL: "http://localhost:3000/books/searchtitleNYT/",
